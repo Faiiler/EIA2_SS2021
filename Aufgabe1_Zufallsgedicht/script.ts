@@ -1,6 +1,6 @@
 const subject: string[] = ["Haylee", "Julia", "Rence", "Kevin", "Sören", "Lizzy"]
 const prediacte: string[] = ["haut", "umarmt", "liebt", "küsst", "weint wegen", "lacht wegen"]
-const object: string[] = ["Geld", "deren Eltern", "Hunde", "Katzen", "Schnabeltiere", "Wasser"]
+const object: string[] = ["Geld", "deren Eltern", "Hunde", "Katzen", "Schnabeltieren", "Wasser"]
 
 //console.log(subject, prediacte, object);
 
