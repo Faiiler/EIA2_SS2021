@@ -1,0 +1,55 @@
+body {
+    text-align: center;
+    display: grid;
+    grid-template-rows: min-content min-content auto;
+    background-image: url("assets/bg1.jpg");
+    font-family: "Arial Black", Arial, "Times New Roman", sans-serif;
+    color: #c9c9c9;
+}
+
+#container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#div0, #div1 {
+    border-style: solid;
+    height: 500px;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 30px;
+}
+
+#div0 {
+    background-color: rgb(111, 135, 118);
+}
+
+#div1 {
+    background-color: rgb(87, 142, 109);
+}
+
+#text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #bbb4b2;
+}
+
+span {
+    position: fixed;
+    border: thin solid black;
+    height: 50px;
+    width: 200px;
+    background-color: rgba(69, 69, 69, 0.69);
+}
+
+h1 {
+    color: rgb(82, 135, 93);
+    font-size: 50px;
+}
+
+
