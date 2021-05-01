@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Memory</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Damit es auch auf dem Handy funktioniert-->
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+        <div>
+            <!-- Overlay-  -->
+            <div id="splashscreen">
+                <h1>Welcome!</h1>
+                <div class="splashscreen-button-container">
+                    <form id="settingsForm">
+                        <div>
+                            <label for="cardCount">Card Pair Count</label>
+                            <input type="number" value="5" min="5" max="25" id="cardCount" name="cardCount">
+                        </div>
+                        <br/>
+
+                        <div>
+                            <label for="bgColor">Back Color</label>
+                            <input type="color" value="#000000" id="bgColor" name="bgColor">
+                            &nbsp;
+                            <label for="fBgColor">Background Color</label>
+                            <input type="color" value="#00f0ff" id="fBgColor" name="fBgColor">
+                        </div>
+                        <br/>
+                        <div>
+                            <label for="textColor">Text Color</label>
+                            <input type="color" value="#ffffff" id="textColor" name="textColor">
+                            &nbsp;
+                            <label for="textFont">Text Font</label>
+                            <select id="textFont" name="textFont">
+                                <option selected>Arial</option>
+                                <option>Consolas</option>
+                                <option>Times New Roman</option>
+                                <option>Calibri</option>
+                            </select>
+                        </div>
+
+                        <br/>
+                        <div>
+                            <label for="cardSize">Card Size</label>
+                            <input type="range" value="125" min="100" max="150" id="cardSize" name="cardSize">
+                        </div>
+                        <br/>
+
+
+                        <br/>
+                        <div>
+                            <button id="startButton">Start</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="winscreen" style="display: none">
+                <div class="winmessage-container">
+                    <span id="winmessage">You win!</span>
+                    <br/>
+                    <button id="play-again-button">
+                        Play Again!
+                    </button>
+                </div>
+            </div>
+
+            <!--  Das Spiel -->
+            <div id="top-container" style="display: none">
+                <div>
+                    <span id="time">00:00</span>
+                </div>
+            </div>
+            <div id="cards-container">
+
+                <!-- Wird generiert -->
+            </div>
+            <div id="bottom-container" style="display: none">
+                <div id="score-container">
+                    <span class="score-container" id="score0container">Score: <span class="score" id="score0">0</span></span>
+                </div>
+            </div>
+
+
+            <div id="footermsg">
+                <span>Made by Maximilian Buckel 266830</span>
+            </div>
+        </div>
+
+        <div id="card-template">
+            <div class="card-inner">
+                <div class="card-front">
+
+                </div>
+                <div class="card-back">
+                    <div class="card-content">
+                        <div class="card-icon-wrapper"></div>
+                        <div class="card-name"></div>
+                        <div class="card-text"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
