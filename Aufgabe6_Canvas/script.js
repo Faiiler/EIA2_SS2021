@@ -1,5 +1,12 @@
 var L04_GenerativeKunst;
 (function (L04_GenerativeKunst) {
+    /*
+    Aufgabe: L08.1_GenerativeKunst
+    Name: Maximilian Buckel
+    Matrikel: 266830
+    Datum: 06.05.2021
+    Quellen: -
+    */
     var canvas = document.querySelector("#canvas");
     var context = canvas.getContext("2d");
     canvas.width = window.innerWidth;

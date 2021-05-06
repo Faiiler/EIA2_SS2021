@@ -1,5 +1,14 @@
 namespace L04_GenerativeKunst {
 
+    /*
+    Aufgabe: L08.1_GenerativeKunst
+    Name: Maximilian Buckel
+    Matrikel: 266830
+    Datum: 06.05.2021
+    Quellen: -
+    */
+
+
 const canvas: HTMLCanvasElement = document.querySelector("#canvas") as HTMLCanvasElement;
 const context: CanvasRenderingContext2D = canvas.getContext("2d") as CanvasRenderingContext2D;
 
