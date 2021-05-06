@@ -1,15 +1,16 @@
+"use strict";
 var L03_Memory;
 (function (L03_Memory) {
-    var splashscreen = document.querySelector("#splashscreen");
-    var winscreen = document.querySelector("#winscreen");
-    var winMessage = document.querySelector("#winmessage");
-    var cardsContainer = document.querySelector("#cards-container");
-    var cardTemplate = document.querySelector("#card-template");
+    const splashscreen = document.querySelector("#splashscreen");
+    const winscreen = document.querySelector("#winscreen");
+    const winMessage = document.querySelector("#winmessage");
+    const cardsContainer = document.querySelector("#cards-container");
+    const cardTemplate = document.querySelector("#card-template");
     ;
-    var time = document.querySelector("#time");
-    var settingsForm = document.querySelector("#settingsForm");
-    var startButton = document.querySelector("#startButton");
-    var CARD_NAMES = [
+    const time = document.querySelector("#time");
+    const settingsForm = document.querySelector("#settingsForm");
+    const startButton = document.querySelector("#startButton");
+    const CARD_NAMES = [
         "A",
         "2",
         "3",
@@ -24,13 +25,13 @@ var L03_Memory;
         "Q",
         "K"
     ];
-    var CARD_SYMBOLS = [
+    const CARD_SYMBOLS = [
         "club",
         "diamond",
         "heart",
         "spade"
     ];
-    var CARD_COLORS = [
+    const CARD_COLORS = [
         "#540D6E",
         "#AA4596",
         "#EE4266",
@@ -48,7 +49,7 @@ var L03_Memory;
         "#CB429F",
         "#4A6C6F"
     ];
-    var CARD_IMAGES = {
+    const CARD_IMAGES = {
         "club": '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 240">\n' +
             '  <title>club</title>\n' +
             '  <path d="M645,374a60,60,0,0,0,15-118.11,60,60,0,1,0-119.94,0,60,60,0,1,0,45,110V404H570a15,15,0,0,0,0,30h60a15,15,0,0,0,0-30H615V365.93A59.64,59.64,0,0,0,645,374Z" transform="translate(-495 -194)"/>\n' +
@@ -66,7 +67,7 @@ var L03_Memory;
             '  <path d="M609.88,196a15,15,0,0,0-19.76,0C536.36,243,495,270.67,495,315.43c0,35.31,25.25,64.32,60,64.32A54.21,54.21,0,0,0,585,371v35H570a15,15,0,0,0,0,30h60a15,15,0,0,0,0-30H615V371a54.21,54.21,0,0,0,30,8.78c34.75,0,60-29,60-64.32C705,270.66,663.64,243,609.88,196Z" transform="translate(-495 -192.25)"/>\n' +
             '</svg>\n'
     };
-    var CONTENT = [
+    const CONTENT = [
         "A",
         "B",
         "C",
@@ -94,16 +95,14 @@ var L03_Memory;
         "Y",
         "Z"
     ];
-    var SHOW_CARD_DURATION = 2500;
+    const SHOW_CARD_DURATION = 2500;
     function getAllCardTypes() {
-        var allCardTypes = [];
-        for (var _i = 0, CARD_SYMBOLS_1 = CARD_SYMBOLS; _i < CARD_SYMBOLS_1.length; _i++) {
-            var symbol = CARD_SYMBOLS_1[_i];
-            for (var _a = 0, CARD_NAMES_1 = CARD_NAMES; _a < CARD_NAMES_1.length; _a++) {
-                var name_1 = CARD_NAMES_1[_a];
+        const allCardTypes = [];
+        for (let symbol of CARD_SYMBOLS) {
+            for (let name of CARD_NAMES) {
                 allCardTypes.push({
                     symbol: symbol,
-                    name: name_1,
+                    name: name,
                     color: CARD_COLORS[Math.floor(Math.random() * CARD_COLORS.length)]
                 });
             }
@@ -111,14 +110,14 @@ var L03_Memory;
         return allCardTypes;
     }
     function selectCards(cardsToGenerate) {
-        console.debug("Generating " + cardsToGenerate + " card pairs");
-        var allCardTypes = getAllCardTypes();
-        var contents = CONTENT.slice(0, CONTENT.length);
-        var cards = [];
-        for (var i = 0; i < cardsToGenerate; i++) {
+        console.debug(`Generating ${cardsToGenerate} card pairs`);
+        const allCardTypes = getAllCardTypes();
+        const contents = CONTENT.slice(0, CONTENT.length);
+        const cards = [];
+        for (let i = 0; i < cardsToGenerate; i++) {
             // https://stackoverflow.com/a/5915122
-            var cardType = allCardTypes.splice(Math.floor(Math.random() * allCardTypes.length), 1)[0];
-            var content = contents.splice(Math.floor(Math.random() * contents.length), 1)[0];
+            let cardType = allCardTypes.splice(Math.floor(Math.random() * allCardTypes.length), 1)[0];
+            let content = contents.splice(Math.floor(Math.random() * contents.length), 1)[0];
             cards.push({
                 type: cardType,
                 content: content
@@ -126,11 +125,10 @@ var L03_Memory;
         }
         return cards;
     }
-    var cardStorage = {};
+    const cardStorage = {};
     function placeCards(cards) {
-        var partialCards = [];
-        for (var _i = 0, cards_1 = cards; _i < cards_1.length; _i++) { //Alternativ auch for(let i = 0;i<cards.length;i++) { let card = cards[i];
-            var card = cards_1[_i];
+        const partialCards = [];
+        for (let card of cards) { //Alternativ auch for(let i = 0;i<cards.length;i++) { let card = cards[i];
             partialCards.push({
                 type: card.type,
                 content: card.content
@@ -141,9 +139,9 @@ var L03_Memory;
             });
         }
         shuffle(partialCards);
-        var cardCounter = 0;
-        var _loop_1 = function (card) {
-            var cardElement = cardTemplate.cloneNode(true);
+        let cardCounter = 0;
+        for (let card of partialCards) {
+            let cardElement = cardTemplate.cloneNode(true);
             cardElement.id = "card" + cardCounter++;
             cardElement.classList.add("card");
             cardStorage[cardElement.id] = card;
@@ -156,21 +154,17 @@ var L03_Memory;
                 onCardClick(cardElement, false);
             });
             cardsContainer.appendChild(cardElement);
-        };
-        for (var _a = 0, partialCards_1 = partialCards; _a < partialCards_1.length; _a++) {
-            var card = partialCards_1[_a];
-            _loop_1(card);
         }
         timeTimer = setInterval(function () {
-            var now = Date.now();
-            var duration = now - startTime;
+            let now = Date.now();
+            let duration = now - startTime;
             time.innerText = formatDuration(duration);
         }, 1000);
     }
     function selectAndPlaceCards() {
-        var formData = new FormData(settingsForm);
-        var cards = selectCards(parseInt(formData.get("cardCount")));
-        var rootStyle = document.querySelector(":root").style;
+        const formData = new FormData(settingsForm);
+        const cards = selectCards(parseInt(formData.get("cardCount")));
+        let rootStyle = document.querySelector(":root").style;
         rootStyle.setProperty("--card-size", formData.get("cardSize") + "px");
         rootStyle.setProperty("--back-color", formData.get("bgColor"));
         rootStyle.setProperty("--background-color", formData.get("fBgColor"));
@@ -178,13 +172,13 @@ var L03_Memory;
         rootStyle.setProperty("--text-font", formData.get("textFont"));
         placeCards(cards);
     }
-    var startTime;
-    var activePlayer = 0;
-    var scores = [0, 0];
-    var timeTimer;
-    var inputLocked = false;
-    var lastFlippedCard;
-    var lastFlippedCardElement;
+    let startTime;
+    let activePlayer = 0;
+    let scores = [0, 0];
+    let timeTimer;
+    let inputLocked = false;
+    let lastFlippedCard;
+    let lastFlippedCardElement;
     function onCardClick(cardElement, isAiClick) {
         if (inputLocked) {
             return;
@@ -192,7 +186,7 @@ var L03_Memory;
         if (cardElement.classList.contains("flipped")) {
             return;
         }
-        var card = cardStorage[cardElement.id];
+        let card = cardStorage[cardElement.id];
         console.log("Card " + cardElement.id + " flipped by player " + activePlayer + "!");
         console.log(card);
         cardElement.classList.add("flipped");
@@ -201,10 +195,10 @@ var L03_Memory;
             if (areCardsEqual(lastFlippedCard, card)) {
                 console.log("Matching cards!");
                 scores[activePlayer]++;
-                var lastFlippedCardElementCopy_1 = lastFlippedCardElement;
+                let lastFlippedCardElementCopy = lastFlippedCardElement;
                 setTimeout(function () {
                     cardElement.classList.add("hidden");
-                    lastFlippedCardElementCopy_1.classList.add("hidden");
+                    lastFlippedCardElementCopy.classList.add("hidden");
                 }, 800);
                 lastFlippedCard = undefined;
                 lastFlippedCardElement = undefined;
@@ -240,11 +234,11 @@ var L03_Memory;
     function updateScore() {
         console.log("Scores: " + scores);
         document.querySelector("#score0").innerHTML = "" + scores[0];
-        var availableCards = document.querySelectorAll(".card:not(.flipped)");
+        let availableCards = document.querySelectorAll(".card:not(.flipped)");
         if (availableCards.length === 0) {
             console.log("I found no cards, I guess we're done!");
-            var endTime = Date.now();
-            var duration = endTime - startTime;
+            let endTime = Date.now();
+            let duration = endTime - startTime;
             if (scores[0] !== scores[1]) {
                 winMessage.innerHTML = "You Win!<br/>" + formatDuration(duration);
             }
@@ -281,7 +275,7 @@ var L03_Memory;
     }
     // https://stackoverflow.com/a/43466724/6257838
     function formatDuration(millis) {
-        var seconds = millis / 1000;
+        let seconds = millis / 1000;
         return [
             pad("" + Math.round(seconds / 60 % 60)),
             pad("" + Math.round(seconds % 60))
@@ -290,7 +284,7 @@ var L03_Memory;
     // Quelle: https://stackoverflow.com/a/6274381
     // Mischen der Karten
     function shuffle(a) {
-        var j, x, i;
+        let j, x, i;
         for (i = a.length - 1; i > 0; i--) {
             j = Math.floor(Math.random() * (i + 1));
             x = a[i];
