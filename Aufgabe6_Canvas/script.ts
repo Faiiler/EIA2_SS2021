@@ -1,3 +1,5 @@
+namespace L04_GenerativeKunst {
+
 const canvas: HTMLCanvasElement = document.querySelector("#canvas") as HTMLCanvasElement;
 const context: CanvasRenderingContext2D = canvas.getContext("2d") as CanvasRenderingContext2D;
 
@@ -89,4 +91,6 @@ function getRandomColor(): string {
         color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
+}
+
 }
