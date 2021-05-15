@@ -1,5 +1,13 @@
 namespace L05_Landschaft {
 
+    /*
+    Aufgabe: L08.2_Blumenwiese: Canvas
+    Name: Maximilian Buckel
+    Matrikel: 266830
+    Datum: 15.05.2021
+    Quellen: -
+    */
+
     const COLOR_SKY: string = "#2ea0dc";
     const COLOR_GRASS: string = "#177b1c";
     const COLOR_MOUNTAIN: string = "#767676";
