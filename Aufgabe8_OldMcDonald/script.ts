@@ -1,32 +1,42 @@
-namespace L09_OldMcDoanldsFarm
-{
-        /*
-        Aufgabe: L09_OldMcDoanldsFarm
-        Name: Maximilian Buckel
-        Matrikel: 266830
-        Datum: 19.05.2021
-        Quellen: Larissa Gaede, Eva Breuninger
-        */
+namespace L09_OldMcDoanldsFarm {
 
+    /*
+    Aufgabe: L09_OldMcDoanldsFarm
+    Name: Maximilian Buckel
+    Matrikel: 266830
+    Datum: 22.05.2021
+    Quellen: Larissa Gaede, Eva Breuninger
+    */
 
-        class Animal {
+    class Animal {
         name: string;
         type: string;
         food: string;
         foodAmount: number;
         sound: string;
+        foodStorage: FoodStorage;
 
-        constructor(_name: string, _type: string, _food: string, _foodAmount: number, _sound: string) {
+        constructor(_name: string, _type: string, _food: string, _foodAmount: number, _sound: string, _foodStorage: FoodStorage) {
             this.name = _name;
             this.type = _type;
             this.food = _food;
             this.foodAmount = _foodAmount;
             this.sound = _sound;
+            this.foodStorage = _foodStorage;
         }
 
         sing(): void {
             let songDiv: HTMLDivElement = <HTMLDivElement>document.getElementById("song");
-            songDiv.innerHTML = "<b> " + this.name + " is now singing </b><br> Old Mac Donald had a farm, I-A-I-A-O. <br> And on his farm he had some " + this.type + "s" + ", I-A-I-A-O. <br> With a " + this.sound + "-" + this.sound + " here, and a " + this.sound + "-" + this.sound + " there, <br> here a " + this.sound + ", there a " + this.sound + " ev'rywhere a " + this.sound + "-" + this.sound;
+            songDiv.style.display = "inherit";
+            songDiv.innerHTML = "<b> " + this.name + " is now singing </b><br>" +
+                "Old Mac Donald had a farm, I-A-I-A-O. <br>" +
+                "And on his farm he had some " + this.type + "s" + ", I-A-I-A-O. <br>" +
+                "With a " + this.sound + "-" + this.sound + " here, and a " + this.sound + "-" + this.sound + " there, <br>" +
+                "here a " + this.sound + ", there a " + this.sound + " ev'rywhere a " + this.sound + "-" + this.sound;
+        }
+
+        eat(): void {
+            this.foodStorage.decrease(this.food, this.foodAmount, this.name);
         }
     }
 
@@ -45,26 +55,35 @@ namespace L09_OldMcDoanldsFarm
             this.carrot = _carrot;
         }
 
-        eat(_food: string, _foodAmount: number, _name: string): void {
+        decrease(_food: string, _foodAmount: number, _name: string): void {
             let foodDiv: HTMLDivElement = <HTMLDivElement>document.getElementById("food");
-            if (_food == "meat") {
-                this.meat -= _foodAmount;
-                foodDiv.innerHTML = _name + " ate " + _foodAmount + ((_foodAmount == 1) ? " piece" : " pieces") + " of " + _food + "<br> " + this.meat + ((this.meat == 1) ? " piece " : " pieces ") + "left";
-            } else if (_food == "weed") {
-                this.weed -= _foodAmount;
-                foodDiv.innerHTML = _name + " ate " + _foodAmount + ((_foodAmount == 1) ? " piece" : " pieces") + " of " + _food + "<br> " + this.weed + ((this.weed == 1) ? " piece " : " pieces ") + "left";
-            } else if (_food == "sweets") {
-                this.sweets -= _foodAmount;
-                foodDiv.innerHTML = _name + " ate " + _foodAmount + ((_foodAmount == 1) ? " piece" : " pieces") + " of " + _food + "<br> " + this.sweets + ((this.sweets == 1) ? " piece " : " pieces ") + "left";
-            } else if (_food == "sushi") {
-                this.sushi -= _foodAmount;
-                foodDiv.innerHTML = _name + " ate " + _foodAmount + ((_foodAmount == 1) ? " piece" : " pieces") + " of " + _food + "<br> " + this.sushi + ((this.sushi == 1) ? " piece " : " pieces ") + "left";
-            } else if (_food == "carrot") {
-                this.carrot -= _foodAmount;
-                foodDiv.innerHTML = _name + " ate " + _foodAmount + ((_foodAmount == 1) ? " piece" : " pieces") + " of " + _food + "<br> " + this.carrot + ((this.carrot == 1) ? " piece " : " pieces ") + "left";
+            let newAmount = 0;
+            switch (_food) {
+                case "meat":
+                    this.meat -= _foodAmount;
+                    newAmount = this.meat;
+                    break;
+                case "weed":
+                    this.weed -= _foodAmount;
+                    newAmount = this.weed;
+                    break;
+                case "sweets":
+                    this.sweets -= _foodAmount;
+                    newAmount = this.sweets;
+                    break;
+                case "sushi":
+                    this.sushi -= _foodAmount;
+                    newAmount = this.sushi;
+                    break;
+                case "carrot":
+                    this.carrot -= _foodAmount;
+                    newAmount = this.carrot;
+                    break;
             }
-
+            foodDiv.innerHTML = _name + " ate " + _foodAmount + ((_foodAmount == 1) ? " piece" : " pieces") + " of " + _food + "<br> " + newAmount + ((newAmount == 1) ? " piece " : " pieces ") + "left";
         }
+
+
     }
 
     interface FoodDesired {
@@ -89,23 +108,18 @@ namespace L09_OldMcDoanldsFarm
     nextBtn.addEventListener("click", function (): void {
         if (i < animalArr.length) {
             let img: HTMLImageElement = <HTMLImageElement>document.getElementById("img");
-            if (animalArr[i].type == "cat") img.setAttribute("src", "./cat.jpg");
-            if (animalArr[i].type == "dog") img.setAttribute("src", "./dog.jpg");
-            if (animalArr[i].type == "catgirl") img.setAttribute("src", "./catgirl.jpg");
-            if (animalArr[i].type == "rabbit") img.setAttribute("src", "rabbit.jpg");
-            if (animalArr[i].type == "horse") img.setAttribute("src", "./horse.jpg");
-            if (animalArr[i].type == "human") img.setAttribute("src", "./shoto.jpg");
+            img.setAttribute("src", "./" + animalArr[i].type + ".jpg");
             hasBought = false;
             nextBtn.innerHTML = "Next";
             animalArr[i].sing();
-            foodStorage.eat(animalArr[i].food, animalArr[i].foodAmount, animalArr[i].name);
+            animalArr[i].eat();
             inventory();
             i++;
         } else {
             buyFood();
             nextBtn.innerHTML = "Next Day";
             alert("Day " + dayCounter + " is over" + "\n" +
-                ((hasBought) ? "Bought" : "Hasn't bought") + "\n" +
+                ((hasBought) ? "Bought food, because some food was running low" : "Hasn't bought any food because there is still enough left") + "\n" +
                 "Current Food Storage: " + "\n" +
                 "Meat: " + foodStorage.meat + "\n" +
                 "Weed: " + foodStorage.weed + "\n" +
@@ -129,12 +143,12 @@ namespace L09_OldMcDoanldsFarm
 
 
     function makeAnimals(): void {
-        animalArr.push(new Animal("Bella", "cat", "meat", 2, "meow"));
-        animalArr.push(new Animal("Niko", "dog", "meat", 3, "niko-niko-nii"));
-        animalArr.push(new Animal("Shiro", "catgirl", "sweets", 10, "nya~"));
-        animalArr.push(new Animal("Pfote", "rabbit", "carrot", 3, "nom-nom"));
-        animalArr.push(new Animal("Daily", "horse", "weed", 5, "wheeeaaa"));
-        animalArr.push(new Animal("Eva", "human", "sushi", 5, "omae wa mo shindeiru"));
+        animalArr.push(new Animal("Bella", "cat", "meat", 2, "meow", foodStorage));
+        animalArr.push(new Animal("Niko", "dog", "meat", 3, "niko-niko-nii", foodStorage));
+        animalArr.push(new Animal("Shiro", "catgirl", "sweets", 10, "nya~", foodStorage));
+        animalArr.push(new Animal("Pfote", "rabbit", "carrot", 3, "nom-nom", foodStorage));
+        animalArr.push(new Animal("Daily", "horse", "weed", 5, "wheeeaaa", foodStorage));
+        animalArr.push(new Animal("Eva", "human", "sushi", 5, "omae wa mo shindeiru", foodStorage));
     }
 
     function foodNeeded(): FoodDesired {
