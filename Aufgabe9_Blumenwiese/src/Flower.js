@@ -1,5 +1,5 @@
-var eia10;
-(function (eia10) {
+var Aufgabe9_Blumenwiese;
+(function (Aufgabe9_Blumenwiese) {
     var Flower = /** @class */ (function () {
         function Flower(_canvas, x, y, height) {
             this.canvas = _canvas;
@@ -50,6 +50,6 @@ var eia10;
         };
         return Flower;
     }());
-    eia10.Flower = Flower;
-})(eia10 || (eia10 = {}));
+    Aufgabe9_Blumenwiese.Flower = Flower;
+})(Aufgabe9_Blumenwiese || (Aufgabe9_Blumenwiese = {}));
 //# sourceMappingURL=Flower.js.map

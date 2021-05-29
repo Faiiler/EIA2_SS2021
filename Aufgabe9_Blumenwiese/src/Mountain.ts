@@ -1,4 +1,4 @@
-namespace eia10 {
+namespace Aufgabe9_Blumenwiese {
     export class Mountain {
         canvas: HTMLCanvasElement;
         context: CanvasRenderingContext2D;
@@ -14,6 +14,7 @@ namespace eia10 {
             this.canvas = _canvas;
             this.context = this.canvas.getContext("2d");
 
+    /// Wie viele Bergspitzen gibt es und wo werden sie platziert?
             this.x = x;
             this.y = y;
             this.w = w;

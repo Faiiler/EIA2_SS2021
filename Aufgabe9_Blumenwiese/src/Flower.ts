@@ -1,4 +1,4 @@
-namespace eia10 {
+namespace Aufgabe9_Blumenwiese {
 
     export class Flower {
         canvas: HTMLCanvasElement;
@@ -39,6 +39,7 @@ namespace eia10 {
             this.context.beginPath();
             this.context.fillStyle = "rgb(0, 150, 0)";
             this.context.fillRect(this.x, this.y, 6, -this.height);
+
             this.context.beginPath();
             let gradient: CanvasGradient = this.context.createRadialGradient(this.x + 3, this.y - this.height, 2, this.x + 3, this.y - this.height, this.scale);
             gradient.addColorStop(0, "rgba(255,255,255,1)");
@@ -52,10 +53,12 @@ namespace eia10 {
             this.context.beginPath();
             this.context.fillStyle = "rgb(0,150,0)";
             this.context.fillRect(this.x, this.y, 6, -this.height);
+
             this.context.beginPath();
             this.context.arc(this.x + 3, this.y - this.height, 7, 0, Math.PI * 2);
             this.context.fillStyle = "yellow";
             this.context.fill();
+
             for (let i: number = 1; i <= 8; i++) {
                 this.context.beginPath();
                 this.context.arc(this.x + 3 + Math.cos((Math.PI * 2) / 8 * i) * 12, this.y - this.height + Math.sin((Math.PI * 2) / 8 * i) * 12, 7, 0, Math.PI * 2);

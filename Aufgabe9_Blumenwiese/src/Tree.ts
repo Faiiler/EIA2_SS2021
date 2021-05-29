@@ -1,4 +1,4 @@
-namespace eia10 {
+namespace Aufgabe9_Blumenwiese {
 
     export class Tree {
         canvas: HTMLCanvasElement;
@@ -27,6 +27,7 @@ namespace eia10 {
             this.context.fillStyle = "rgb(83, 49, 24)";
             this.context.fillRect(this.x, this.y, 40, this.height);
 
+    /// Wieviele Bäume werden gezeichnet
             for (let i: number = 0; i < 10; i++) {
                 this.context.beginPath();
                 this.context.arc(this.x + 20 + this.valuesX[i], this.y + this.height + this.valuesY[i], 50, 0, Math.PI * 2);
@@ -35,6 +36,7 @@ namespace eia10 {
             }
         }
 
+    /// Werte der Bäume
         makeValues(): void {
             this.valuesX = [];
             this.valuesY = [];
@@ -44,6 +46,7 @@ namespace eia10 {
             }
         }
 
+    /// Farben der Blätter
         makeColors(): void {
             this.colors = [];
             for (let i: number = 0; i < 10; i++) {

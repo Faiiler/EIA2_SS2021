@@ -1,4 +1,4 @@
-namespace eia10 {
+namespace Aufgabe9_Blumenwiese {
     export class DayNightCycle {
         canvas: HTMLCanvasElement;
         context: CanvasRenderingContext2D;
@@ -65,6 +65,7 @@ namespace eia10 {
             this.context.fill();
         }
 
+    /// Wird genutzt, damit wir nachts ein dunkleres Bild bekommen
         drawNightAtmosphere(): void {
             this.context.beginPath();
             this.context.fillStyle = "rgba(39, 33, 78, 0.5)";
@@ -75,18 +76,32 @@ namespace eia10 {
             return this.time % (this.total) > (this.total) / 2.1;
         }
 
+    /// Festlegung, welche Farben zu welchem Zeitpunkt verwendet werden
         drawSky(): void {
             this.context.beginPath();
             this.context.rect(0, 0, this.canvas.width, this.canvas.height);
-            if (this.current > 0 && this.current < this.total * 0.02) this.context.fillStyle = DayNightCycle.colorFade(39, 33, 78, 255, 107, 62, this.time % this.total, this.total * 0.02);
-            if (this.current > this.total * 0.02 && this.current < this.total * 0.6) this.context.fillStyle = DayNightCycle.colorFade(255, 107, 62, 181, 214, 224, this.time % this.total - (this.total * 0.02), this.total * 0.04);
-            if (this.current > this.total * 0.06 && this.current < this.total * 0.44) this.context.fillStyle = "rgb(181, 214, 224)";
-            if (this.current > this.total * 0.44 && this.current < this.total * 0.47) this.context.fillStyle = DayNightCycle.colorFade(181, 214, 224, 255, 107, 62, this.time % this.total - (this.total * 0.44), this.total * 0.03);
-            if (this.current > this.total * 0.47 && this.current < this.total * 0.5) this.context.fillStyle = DayNightCycle.colorFade(255, 107, 62, 39, 33, 78, this.time % this.total - (this.total * 0.47), this.total * 0.03);
-            if (this.current > this.total * 0.5 && this.current < this.total) this.context.fillStyle = "rgb(39,33,78)";
+            if (this.current > 0 && this.current < this.total * 0.02){
+                this.context.fillStyle = DayNightCycle.colorFade(39, 33, 78, 255, 107, 62, this.time % this.total, this.total * 0.02);
+            }
+            if (this.current > this.total * 0.02 && this.current < this.total * 0.6) {
+                this.context.fillStyle = DayNightCycle.colorFade(255, 107, 62, 181, 214, 224, this.time % this.total - (this.total * 0.02), this.total * 0.04);
+            }
+            if (this.current > this.total * 0.06 && this.current < this.total * 0.44) { // Tag
+                this.context.fillStyle = "rgb(181, 214, 224)";
+            }
+            if (this.current > this.total * 0.44 && this.current < this.total * 0.47) {
+                this.context.fillStyle = DayNightCycle.colorFade(181, 214, 224, 255, 107, 62, this.time % this.total - (this.total * 0.44), this.total * 0.03);
+            }
+            if (this.current > this.total * 0.47 && this.current < this.total * 0.5) {
+                this.context.fillStyle = DayNightCycle.colorFade(255, 107, 62, 39, 33, 78, this.time % this.total - (this.total * 0.47), this.total * 0.03);
+            }
+            if (this.current > this.total * 0.5 && this.current < this.total) { // Nacht
+                this.context.fillStyle = "rgb(39,33,78)";
+            }
             this.context.fill();
         }
 
+    /// Festlegung der Farben, welche für den Übergang genutzt werden. Das S steht für Start, das E für Ende
         static colorFade(rS: number, gS: number, bS: number, rE: number, gE: number, bE: number, i: number, steps: number): string {
             let r: number = rS + ((rE - rS) / steps) * i;
             let g: number = gS + ((gE - gS) / steps) * i;

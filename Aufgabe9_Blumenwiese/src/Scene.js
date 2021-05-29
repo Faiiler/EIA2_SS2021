@@ -1,17 +1,18 @@
-var eia10;
-(function (eia10) {
+var Aufgabe9_Blumenwiese;
+(function (Aufgabe9_Blumenwiese) {
     var Scene = /** @class */ (function () {
         function Scene(_canvas, _timeScale) {
             this.canvas = _canvas;
             this.context = this.canvas.getContext("2d");
-            this.dayNightCycle = new eia10.DayNightCycle(this.canvas, 70, Math.PI, _timeScale);
-            this.mountain = new eia10.Mountain(this.canvas, 0, 150, this.canvas.width, 300);
-            this.mountain2 = new eia10.Mountain(this.canvas, 0, 300, this.canvas.width, 150);
+            this.dayNightCycle = new Aufgabe9_Blumenwiese.DayNightCycle(this.canvas, 70, Math.PI, _timeScale);
+            this.mountain = new Aufgabe9_Blumenwiese.Mountain(this.canvas, 0, 150, this.canvas.width, 300);
+            this.mountain2 = new Aufgabe9_Blumenwiese.Mountain(this.canvas, 0, 300, this.canvas.width, 150);
             this.makeTrees();
             this.makeFlowers();
             this.makeBees();
             this.makeClouds();
         }
+        /// Was wird zuerst gezeichnet? Verleiht den Objekten eine Hierarchie
         Scene.prototype.update = function () {
             this.dayNightCycle.update();
             this.drawGrass();
@@ -36,31 +37,33 @@ var eia10;
             if (this.dayNightCycle.isNight())
                 this.dayNightCycle.drawNightAtmosphere();
         };
+        /// Make != draw. Make erstellt, zeichnet sie aber nicht
         Scene.prototype.makeClouds = function () {
             this.clouds = [];
             for (var i = 0; i < 5; i++) {
-                this.clouds.push(new eia10.Cloud(this.canvas, Math.random() * this.canvas.width, Math.random() * 100 + 50));
+                this.clouds.push(new Aufgabe9_Blumenwiese.Cloud(this.canvas, Math.random() * this.canvas.width, Math.random() * 100 + 50));
             }
         };
         Scene.prototype.makeBees = function () {
             this.bees = [];
             for (var i = 0; i < 6; i++) {
-                this.bees.push(new eia10.Bee(this.canvas, Math.random() * this.canvas.width, Math.random() * 800 + 300));
+                this.bees.push(new Aufgabe9_Blumenwiese.Bee(this.canvas, Math.random() * this.canvas.width, Math.random() * 800 + 300));
             }
         };
         Scene.prototype.makeTrees = function () {
             this.trees = [];
             for (var i = 0; i < 12; i++) {
-                this.trees.push(new eia10.Tree(this.canvas, Math.random() * this.canvas.width, Math.random() * 1050 + 450));
+                this.trees.push(new Aufgabe9_Blumenwiese.Tree(this.canvas, Math.random() * this.canvas.width, Math.random() * 1050 + 450));
             }
             this.sortTrees(this.trees);
         };
         Scene.prototype.makeFlowers = function () {
             this.flowers = [];
             for (var i = 0; i < 200; i++) {
-                this.flowers.push(new eia10.Flower(this.canvas, Math.random() * this.canvas.width, Math.random() * 1050 + 460, Math.random() * 15 + 30));
+                this.flowers.push(new Aufgabe9_Blumenwiese.Flower(this.canvas, Math.random() * this.canvas.width, Math.random() * 1050 + 460, Math.random() * 15 + 30));
             }
         };
+        /// Welcher Baum steht vor dem anderen? Je kleiner der Y wert, desto früher werden sie gezeichnet
         Scene.prototype.sortTrees = function (trees) {
             var temp = [];
             for (var i = 0; i < trees.length; i++) {
@@ -84,6 +87,6 @@ var eia10;
         };
         return Scene;
     }());
-    eia10.Scene = Scene;
-})(eia10 || (eia10 = {}));
+    Aufgabe9_Blumenwiese.Scene = Scene;
+})(Aufgabe9_Blumenwiese || (Aufgabe9_Blumenwiese = {}));
 //# sourceMappingURL=Scene.js.map

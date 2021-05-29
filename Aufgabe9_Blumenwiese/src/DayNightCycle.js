@@ -1,5 +1,5 @@
-var eia10;
-(function (eia10) {
+var Aufgabe9_Blumenwiese;
+(function (Aufgabe9_Blumenwiese) {
     var DayNightCycle = /** @class */ (function () {
         function DayNightCycle(_canvas, _size, _angle, _timeScale) {
             this.canvas = _canvas;
@@ -47,6 +47,7 @@ var eia10;
             this.context.fillStyle = gradient;
             this.context.fill();
         };
+        /// Wird genutzt, damit wir nachts ein dunkleres Bild bekommen
         DayNightCycle.prototype.drawNightAtmosphere = function () {
             this.context.beginPath();
             this.context.fillStyle = "rgba(39, 33, 78, 0.5)";
@@ -55,23 +56,31 @@ var eia10;
         DayNightCycle.prototype.isNight = function () {
             return this.time % (this.total) > (this.total) / 2.1;
         };
+        /// Festlegung, welche Farben zu welchem Zeitpunkt verwendet werden
         DayNightCycle.prototype.drawSky = function () {
             this.context.beginPath();
             this.context.rect(0, 0, this.canvas.width, this.canvas.height);
-            if (this.current > 0 && this.current < this.total * 0.02)
+            if (this.current > 0 && this.current < this.total * 0.02) {
                 this.context.fillStyle = DayNightCycle.colorFade(39, 33, 78, 255, 107, 62, this.time % this.total, this.total * 0.02);
-            if (this.current > this.total * 0.02 && this.current < this.total * 0.6)
+            }
+            if (this.current > this.total * 0.02 && this.current < this.total * 0.6) {
                 this.context.fillStyle = DayNightCycle.colorFade(255, 107, 62, 181, 214, 224, this.time % this.total - (this.total * 0.02), this.total * 0.04);
-            if (this.current > this.total * 0.06 && this.current < this.total * 0.44)
+            }
+            if (this.current > this.total * 0.06 && this.current < this.total * 0.44) { // Tag
                 this.context.fillStyle = "rgb(181, 214, 224)";
-            if (this.current > this.total * 0.44 && this.current < this.total * 0.47)
+            }
+            if (this.current > this.total * 0.44 && this.current < this.total * 0.47) {
                 this.context.fillStyle = DayNightCycle.colorFade(181, 214, 224, 255, 107, 62, this.time % this.total - (this.total * 0.44), this.total * 0.03);
-            if (this.current > this.total * 0.47 && this.current < this.total * 0.5)
+            }
+            if (this.current > this.total * 0.47 && this.current < this.total * 0.5) {
                 this.context.fillStyle = DayNightCycle.colorFade(255, 107, 62, 39, 33, 78, this.time % this.total - (this.total * 0.47), this.total * 0.03);
-            if (this.current > this.total * 0.5 && this.current < this.total)
+            }
+            if (this.current > this.total * 0.5 && this.current < this.total) { // Nacht
                 this.context.fillStyle = "rgb(39,33,78)";
+            }
             this.context.fill();
         };
+        /// Festlegung der Farben, welche für den Übergang genutzt werden. Das S steht für Start, das E für Ende
         DayNightCycle.colorFade = function (rS, gS, bS, rE, gE, bE, i, steps) {
             var r = rS + ((rE - rS) / steps) * i;
             var g = gS + ((gE - gS) / steps) * i;
@@ -80,6 +89,6 @@ var eia10;
         };
         return DayNightCycle;
     }());
-    eia10.DayNightCycle = DayNightCycle;
-})(eia10 || (eia10 = {}));
+    Aufgabe9_Blumenwiese.DayNightCycle = DayNightCycle;
+})(Aufgabe9_Blumenwiese || (Aufgabe9_Blumenwiese = {}));
 //# sourceMappingURL=DayNightCycle.js.map

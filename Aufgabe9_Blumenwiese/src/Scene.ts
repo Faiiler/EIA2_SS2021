@@ -1,4 +1,4 @@
-namespace eia10 {
+namespace Aufgabe9_Blumenwiese {
     export class Scene {
         canvas: HTMLCanvasElement;
         context: CanvasRenderingContext2D;
@@ -24,6 +24,7 @@ namespace eia10 {
             this.makeClouds();
         }
 
+    /// Was wird zuerst gezeichnet? Verleiht den Objekten eine Hierarchie
         update(): void {
             this.dayNightCycle.update();
             this.drawGrass();
@@ -44,6 +45,7 @@ namespace eia10 {
             if (this.dayNightCycle.isNight()) this.dayNightCycle.drawNightAtmosphere();
         }
 
+    /// Make != draw. Make erstellt, zeichnet sie aber nicht
         makeClouds(): void {
             this.clouds = [];
             for (let i: number = 0; i < 5; i++) {
@@ -73,6 +75,7 @@ namespace eia10 {
             }
         }
 
+    /// Welcher Baum steht vor dem anderen? Je kleiner der Y wert, desto früher werden sie gezeichnet
         sortTrees(trees: Tree[]): void {
             let temp: number[] = [];
             for (let i: number = 0; i < trees.length; i++) {

@@ -1,5 +1,5 @@
-var eia10;
-(function (eia10) {
+var Aufgabe9_Blumenwiese;
+(function (Aufgabe9_Blumenwiese) {
     var Cloud = /** @class */ (function () {
         function Cloud(_canvas, x, y) {
             this.canvas = _canvas;
@@ -30,6 +30,6 @@ var eia10;
         };
         return Cloud;
     }());
-    eia10.Cloud = Cloud;
-})(eia10 || (eia10 = {}));
+    Aufgabe9_Blumenwiese.Cloud = Cloud;
+})(Aufgabe9_Blumenwiese || (Aufgabe9_Blumenwiese = {}));
 //# sourceMappingURL=Cloud.js.map

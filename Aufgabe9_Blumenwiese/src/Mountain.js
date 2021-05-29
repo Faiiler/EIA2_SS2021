@@ -1,10 +1,11 @@
-var eia10;
-(function (eia10) {
+var Aufgabe9_Blumenwiese;
+(function (Aufgabe9_Blumenwiese) {
     var Mountain = /** @class */ (function () {
         function Mountain(_canvas, x, y, w, h) {
             this.points = [];
             this.canvas = _canvas;
             this.context = this.canvas.getContext("2d");
+            /// Wie viele Bergspitzen gibt es und wo werden sie platziert?
             this.x = x;
             this.y = y;
             this.w = w;
@@ -31,6 +32,6 @@ var eia10;
         };
         return Mountain;
     }());
-    eia10.Mountain = Mountain;
-})(eia10 || (eia10 = {}));
+    Aufgabe9_Blumenwiese.Mountain = Mountain;
+})(Aufgabe9_Blumenwiese || (Aufgabe9_Blumenwiese = {}));
 //# sourceMappingURL=Mountain.js.map
