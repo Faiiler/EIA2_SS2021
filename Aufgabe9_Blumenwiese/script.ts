@@ -4,7 +4,6 @@ namespace Aufgabe9_Blumenwiese {
 
     const timeScale: number = 0.005;
     const scene: Scene = new Scene(canvas, timeScale);
-    console.log(timeScale)
 
     function updateAll(): void {
         scene.update();
