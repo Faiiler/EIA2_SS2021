@@ -3,6 +3,7 @@ var Aufgabe9_Blumenwiese;
     var canvas = document.getElementById("canvas");
     var timeScale = 0.005;
     var scene = new Aufgabe9_Blumenwiese.Scene(canvas, timeScale);
+    console.log(timeScale);
     function updateAll() {
         scene.update();
     }

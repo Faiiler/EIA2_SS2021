@@ -16,7 +16,7 @@ var Aufgabe9_Blumenwiese;
         Scene.prototype.update = function () {
             this.dayNightCycle.update();
             this.drawGrass();
-            for (var _i = 0, _a = this.clouds; _i < _a.length; _i++) {
+            for (var _i = 0, _a = this.clouds; _i < _a.length; _i++) { //Für jede Wolke im Wolkenarray wird die Cloud geupdated
                 var cloud = _a[_i];
                 cloud.update();
             }

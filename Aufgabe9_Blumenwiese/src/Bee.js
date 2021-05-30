@@ -19,7 +19,7 @@ var Aufgabe9_Blumenwiese;
             this.updateVelocities();
             this.drawBee();
         };
-        /// Biene wird gezeichnet
+        /// Biene wird gezeichnet + umrandet
         Bee.prototype.drawBee = function () {
             this.context.beginPath();
             this.context.ellipse(this.x, this.y, this.scale, this.scale * 0.7, (this.vX > 0) ? -Math.PI / 10 : Math.PI / 10, 0, 2 * Math.PI);
@@ -28,7 +28,7 @@ var Aufgabe9_Blumenwiese;
             this.context.strokeStyle = "black";
             this.context.stroke();
             this.context.fill();
-            /// Umrandung der Biene
+            /// Auge der Biene
             this.context.beginPath();
             this.context.arc((this.vX > 0) ? this.x + this.scale / 3 : this.x - this.scale / 3, this.y - this.scale / 6, this.scale / 5, 0, Math.PI * 2);
             this.context.fillStyle = "black";

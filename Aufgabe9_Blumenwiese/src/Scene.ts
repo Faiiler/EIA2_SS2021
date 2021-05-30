@@ -1,4 +1,5 @@
 namespace Aufgabe9_Blumenwiese {
+
     export class Scene {
         canvas: HTMLCanvasElement;
         context: CanvasRenderingContext2D;
@@ -28,7 +29,7 @@ namespace Aufgabe9_Blumenwiese {
         update(): void {
             this.dayNightCycle.update();
             this.drawGrass();
-            for (let cloud of this.clouds) {
+            for (let cloud of this.clouds) {    //Für jede Wolke im Wolkenarray wird die Cloud geupdated
                 cloud.update();
             }
             this.mountain.draw();

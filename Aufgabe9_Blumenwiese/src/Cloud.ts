@@ -1,4 +1,5 @@
 namespace Aufgabe9_Blumenwiese {
+
     export class Cloud {
         canvas: HTMLCanvasElement;
         context: CanvasRenderingContext2D;

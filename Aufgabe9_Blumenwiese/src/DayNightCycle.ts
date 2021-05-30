@@ -1,4 +1,5 @@
 namespace Aufgabe9_Blumenwiese {
+
     export class DayNightCycle {
         canvas: HTMLCanvasElement;
         context: CanvasRenderingContext2D;
