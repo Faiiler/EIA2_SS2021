@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 26vh);
+    grid-template-areas:
+    "img song next"
+    "img food next"
+    "img action next"
+    "img inventory next";
+    background: url(./background.jpeg);
+
+}
+#img {
+    position: relative;
+    grid-area: img;
+    width: 100%;
+    z-index: 2;
+}
+
+#song, #food, #inventory, #next, #action {
+    margin: 5px;
+    text-align: center;
+    font-size: 23px;
+    color: white;
+    font-weight: 600;
+    text-shadow: 0 0 4px black;
+    align-self: center;
+    background-color: rgba(85, 199, 85, 0.7);
+    border-radius: 5px;
+}
+
+#song {
+    grid-area: song;
+    padding: 5px;
+    min-height: 215px;
+}
+
+#food {
+    grid-area: food;
+}
+
+#inventory {
+    grid-area: inventory;
+}
+
+#next {
+    grid-area: next;
+    height: 70px;
+    background-color: #555;
+    color: white;
+    font-weight: 700;
+    align-self: start;
+}
+
+#next:hover {
+    background-color: #444;
+}
