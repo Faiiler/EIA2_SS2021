@@ -1,5 +1,12 @@
 var L05_Landschaft;
 (function (L05_Landschaft) {
+    /*
+    Aufgabe: L08.2_Blumenwiese: Canvas
+    Name: Maximilian Buckel
+    Matrikel: 266830
+    Datum: 15.05.2021
+    Quellen: -
+    */
     var COLOR_SKY = "#2ea0dc";
     var COLOR_GRASS = "#177b1c";
     var COLOR_MOUNTAIN = "#767676";

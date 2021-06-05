@@ -1,3 +1,4 @@
+"use strict";
 var L04_GenerativeKunst;
 (function (L04_GenerativeKunst) {
     /*
@@ -7,8 +8,8 @@ var L04_GenerativeKunst;
     Datum: 06.05.2021
     Quellen: -
     */
-    var canvas = document.querySelector("#canvas");
-    var context = canvas.getContext("2d");
+    const canvas = document.querySelector("#canvas");
+    const context = canvas.getContext("2d");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     draw();
@@ -18,18 +19,18 @@ var L04_GenerativeKunst;
         draw();
     });
     function draw() {
-        var shapeCount = getRandomInt(100, 10000); //If you want a clear background, set this number to 5, 100
-        for (var i = 0; i < shapeCount; i++) {
+        const shapeCount = getRandomInt(100, 10000); //If you want a clear background, set this number to 5, 100
+        for (let i = 0; i < shapeCount; i++) {
             drawRandomShape();
         }
     }
     function drawRandomShape() {
-        var x = getRandomInt(0, canvas.width);
-        var y = getRandomInt(0, canvas.height);
+        const x = getRandomInt(0, canvas.width);
+        const y = getRandomInt(0, canvas.height);
         context.save();
         context.translate(x, y);
         context.fillStyle = getRandomColor();
-        var shapeType = getRandomInt(0, 3);
+        const shapeType = getRandomInt(0, 3);
         switch (shapeType) {
             case 0:
                 drawRandomRect();
@@ -44,23 +45,23 @@ var L04_GenerativeKunst;
         context.restore();
     }
     function drawRandomRect() {
-        var width = getRandomInt(10, 100);
-        var height = getRandomInt(10, 100);
+        const width = getRandomInt(10, 100);
+        const height = getRandomInt(10, 100);
         context.fillRect(0, 0, width, height);
     }
     function drawRandomCircle() {
-        var size = getRandomInt(1, 100);
+        const size = getRandomInt(1, 100);
         context.beginPath();
         context.arc(0, 0, size, 0, 360);
         context.closePath();
         context.fill();
     }
     function drawRandomPoly() {
-        var points = getRandomInt(3, 8);
+        const points = getRandomInt(3, 8);
         context.beginPath();
-        for (var i = 0; i < points; i++) {
-            var x = getRandomInt(0, 100) - getRandomInt(0, 100);
-            var y = getRandomInt(0, 100) - getRandomInt(0, 100);
+        for (let i = 0; i < points; i++) {
+            const x = getRandomInt(0, 100) - getRandomInt(0, 100);
+            const y = getRandomInt(0, 100) - getRandomInt(0, 100);
             context.lineTo(x, y);
         }
         context.closePath();
@@ -74,9 +75,9 @@ var L04_GenerativeKunst;
     }
     // https://stackoverflow.com/a/1484514
     function getRandomColor() {
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 8; i++) {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 8; i++) {
             color += letters[Math.floor(Math.random() * 16)];
         }
         return color;

@@ -17,10 +17,10 @@ namespace L09_OldMcDonaldsFarm {
         carrot: number;
     }
 
-
     let foodStorage: FoodStorage = new FoodStorage(5, 18, 27, 10, 25);
     let animalArr: Animal[] = [];
     makeAnimals();
+
 
 
     let i: number = 0;
