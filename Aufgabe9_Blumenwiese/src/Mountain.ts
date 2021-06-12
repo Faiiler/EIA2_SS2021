@@ -15,7 +15,7 @@ namespace Aufgabe9_Blumenwiese {
             this.canvas = _canvas;
             this.context = this.canvas.getContext("2d");
 
-    /// Wie viele Bergspitzen gibt es und wo werden sie platziert?
+
             this.x = x;
             this.y = y;
             this.w = w;
