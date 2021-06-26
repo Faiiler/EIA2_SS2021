@@ -6,7 +6,6 @@ namespace BlumenwieseIntelligent {
     Matrikel: 266825
     Datum: 26.06.2021
     Quellen: Larissa Gaede, Eva Breuninger
-    Anmerkung: Aufgrund von Zeitmangels bzgl. anderer Abgaben ist es mir nicht möglich zusätzlich zum Code ein Konzept zu erstellen.
     */
 
     let timeScale: number = 0.005;
